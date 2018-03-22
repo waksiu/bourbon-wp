@@ -1,0 +1,60 @@
+version: "3"
+    #        www:
+    #       build: .
+    #       ports:
+    #           - 8001:80
+    #       volumes:
+    #           - ./www:/var/www/html/
+    #       networks:
+    #           - default
+services:
+  db_for_wp:
+    image: mysql
+    container_name: wordpress-db
+    ports:
+      - 3306:3306
+    restart: always
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: rudolf
+    volumes:
+#      - ./db_import:/docker-entrypoint-initdb.d
+      - ./mysql_data:/var/lib/mysql
+    networks:
+      - default
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+     - db_for_wp:db
+    ports:
+     - "8001:80"
+    environment:
+     MYSQL_USER: wordpress
+     MYSQL_PASSWORD: wordpress
+     MYSQL_ROOT_PASSWORD: rudolf
+    networks:
+      - default
+  wordpress:
+    depends_on:
+      - db_for_wp
+    image: wordpress:latest
+    container_name: wordpress-test
+    ports:
+      - "8000:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db_for_wp:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - ./data:/data
+      - ./bourbon:/var/www/html/wp-content/themes/bourbon
+    networks:
+      - default
+#volumes:
+#  mysql_data: /
+
+
