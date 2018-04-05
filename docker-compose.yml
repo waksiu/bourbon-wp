@@ -52,6 +52,8 @@ services:
     volumes:
       - ./data:/data
       - ./bourbon:/var/www/html/wp-content/themes/bourbon
+      - ./elementor:/var/www/html/wp-content/plugins/elementor
+      - ./elementor-pro:/var/www/html/wp-content/plugins/elementor-pro
     networks:
       - default
 #volumes:
