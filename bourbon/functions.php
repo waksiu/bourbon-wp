@@ -159,3 +159,58 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+/**
+ * Elementor widget
+ */
+class ElementorCustomElement {
+
+    private static $instance = null;
+
+    public static function get_instance() {
+        if ( ! self::$instance )
+            self::$instance = new self;
+        return self::$instance;
+    }
+
+    public function init(){
+        add_action( 'elementor/widgets/widgets_registered', array( $this, 'widgets_registered' ) );
+    }
+
+    public function widgets_registered() {
+
+        // We check if the Elementor plugin has been installed / activated.
+        if(defined('ELEMENTOR_PATH') && class_exists('Elementor\Widget_Base')){
+
+            // We look for any theme overrides for this custom Elementor element.
+            // If no theme overrides are found we use the default one in this plugin.
+
+            $widget_file = get_template_directory() .'/blocks/elementor/my-widget.php';
+            $template_file = locate_template($widget_file);
+            if ( !$template_file || !is_readable( $template_file ) ) {
+                $template_file = get_template_directory() . '/blocks/elementor/my-widget.php';
+            }
+            if ( $template_file && is_readable( $template_file ) ) {
+                require_once $template_file;
+            }
+        }
+    }
+}
+
+ElementorCustomElement::get_instance()->init();
+
+function bourbon_style() {
+    wp_enqueue_style( 'bg', get_template_directory_uri() . '/css/bootstrap-grid.min.css' );
+    wp_enqueue_style( 'br', get_template_directory_uri() . '/css/bootstrap-reboot.min.css' );
+    wp_enqueue_style( 'bm', get_template_directory_uri() . '/css/bootstrap.min.css' );
+    wp_enqueue_style( 'main-css', get_template_directory_uri() . '/css/css.css' );
+    wp_enqueue_style( 'bourbon-sass', get_template_directory_uri() . '/sass-bourbon/style.css' );
+    wp_enqueue_style( 'font-1', 'http://fonts.googleapis.com/css?family=Open+Sans:light:300italic,400italic,700italic,300,400,700' );
+    wp_enqueue_style( 'font-2', 'http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,800,700,900' );
+}
+add_action( 'wp_enqueue_scripts', 'bourbon_style' );
+
+
+//add_action('elementor/editor/after_enqueue_scripts', function() {
+//    wp_enqueue_script( 'script_name', plugin_dir_url( __FILE__ ) . 'path/to/file.js' );
+//    wp_enqueue_style( 'style_name', plugin_dir_url( __FILE__ ) . 'path/to/file.css' );
+//});

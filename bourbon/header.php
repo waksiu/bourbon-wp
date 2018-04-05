@@ -53,6 +53,28 @@
 			) );
 			?>
 		</nav><!-- #site-navigation -->
+
+        <!--[jumotron start]-->
+        <div class="jumbotron-ver2 jumbo img-responsive">
+            <div class="jumbotron-table">
+                <div class="jumbotron-center">
+                    <div class="title">
+                        <div class="tlt tlt-ver2">
+                            <ul class="texts">
+                                <li data-in-effect="fadeInDown" data-in-shuffle="false" data-out-effect="flipOutX" data-out-shuffle="true"><h1>We are  Pro<span class="span-1">builder</span></h1></li>
+                                <li data-in-effect="fadeInDown" data-in-shuffle="false" data-out-effect="flipOutX" data-out-shuffle="true"><h1>We build faster</h1></li>
+                                <li data-in-effect="fadeInDown" data-in-shuffle="false" data-out-effect="flipOutX" data-out-shuffle="true"><h1>ProBuilder works Great</h1></li>
+                            </ul>
+                            <p>
+                                Professional & Building Company
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="opac"></div>
+        <!--[jumotron end]-->
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">
