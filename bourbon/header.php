@@ -25,25 +25,6 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'bourbon' ); ?></a>
 
 	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$bourbon_description = get_bloginfo( 'description', 'display' );
-			if ( $bourbon_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $bourbon_description; /* WPCS: xss ok. */ ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
-
 		<nav id="site-navigation" class="main-navigation">
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'bourbon' ); ?></button>
 			<?php
@@ -61,13 +42,33 @@
                     <div class="title">
                         <div class="tlt tlt-ver2">
                             <ul class="texts">
-                                <li data-in-effect="fadeInDown" data-in-shuffle="false" data-out-effect="flipOutX" data-out-shuffle="true"><h1>We are  Pro<span class="span-1">builder</span></h1></li>
-                                <li data-in-effect="fadeInDown" data-in-shuffle="false" data-out-effect="flipOutX" data-out-shuffle="true"><h1>We build faster</h1></li>
-                                <li data-in-effect="fadeInDown" data-in-shuffle="false" data-out-effect="flipOutX" data-out-shuffle="true"><h1>ProBuilder works Great</h1></li>
+                                <?php
+                                the_custom_logo();
+                                if ( is_front_page() && is_home() ) :
+                                    ?>
+<!--                                    <h1 class="site-title"><a href="--><?php //echo esc_url( home_url( '/' ) ); ?><!--" rel="home">--><?php //bloginfo( 'name' ); ?><!--</a></h1>-->
+                                    <li data-in-effect="fadeInDown" data-in-shuffle="false" data-out-effect="flipOutX" data-out-shuffle="true"><h1><?php bloginfo( 'name' ); ?></h1></li>
+                                <?php
+                                else :
+                                    ?>
+<!--                                    <p class="site-title"><a href="--><?php //echo esc_url( home_url( '/' ) ); ?><!--" rel="home">--><?php //bloginfo( 'name' ); ?><!--</a></p>-->
+                                    <li data-in-effect="fadeInDown" data-in-shuffle="false" data-out-effect="flipOutX" data-out-shuffle="true"><h1><?php bloginfo( 'name' ); ?></h1></li>
+                                <?php
+                                endif;
+                                ?>
+<!--                                <li data-in-effect="fadeInDown" data-in-shuffle="false" data-out-effect="flipOutX" data-out-shuffle="true"><h1>We are  Pro<span class="span-1">builder</span></h1></li>-->
+<!--                                <li data-in-effect="fadeInDown" data-in-shuffle="false" data-out-effect="flipOutX" data-out-shuffle="true"><h1>We build faster</h1></li>-->
+<!--                                 <li data-in-effect="fadeInDown" data-in-shuffle="false" data-out-effect="flipOutX" data-out-shuffle="true"><h1>ProBuilder works Great</h1></li>-->
                             </ul>
-                            <p>
-                                Professional & Building Company
-                            </p>
+                                <?php
+                                $bourbon_description = get_bloginfo( 'description', 'display' );
+                                if ( $bourbon_description || is_customize_preview() ) :
+                                    ?>
+                                    <p class="revealSubTitle site-description"><?php echo $bourbon_description; /* WPCS: xss ok. */ ?></p>
+                                <?php endif; ?>
+<!--                            <p>-->
+<!--                                Professional & Building Company-->
+<!--                            </p>-->
                         </div>
                     </div>
                 </div>
