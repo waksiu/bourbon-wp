@@ -209,6 +209,34 @@ function bourbon_style() {
 }
 add_action( 'wp_enqueue_scripts', 'bourbon_style' );
 
+function bourbon_js() {
+//    wp_enqueue_script( 'bourbon-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20180405', true );
+    wp_enqueue_script( 'bourbon-js0', get_template_directory_uri() . '/js2/jquery-3.3.1.min.js');
+    wp_enqueue_script( 'bourbon-js1', get_template_directory_uri() . '/js2/html5shiv.min.js');
+    wp_enqueue_script( 'bourbon-js2', get_template_directory_uri() . '/js2/respond.min.js');
+    wp_enqueue_script( 'bourbon-js3', get_template_directory_uri() . '/js2/jquery.waypoints.min.js');
+    wp_enqueue_script( 'bourbon-js4', get_template_directory_uri() . '/js2/jquery.counterup.min.js');
+    wp_enqueue_script( 'bourbon-js5', get_template_directory_uri() . '/js2/svgembedder.min.js');
+    
+//    wp_enqueue_script( 'bourbon-js6', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAi4pzXIaemolBXDPx_xYjp-97HMC209GI');
+//    wp_enqueue_script( 'bourbon-js7', get_template_directory_uri() . '/js2/google.maps.js');
+    
+    wp_enqueue_script( 'bourbon-js8', get_template_directory_uri() . '/owl-carousel/owl.carousel.min.js');
+    
+    wp_enqueue_script( 'bourbon-js9', get_template_directory_uri() . '/js2/bootstrap.bundle.min.js');
+    wp_enqueue_script( 'bourbon-js10', get_template_directory_uri() . '/js2/anijs.js');
+    wp_enqueue_script( 'bourbon-js11', get_template_directory_uri() . '/js2/scrollReveal.min.js');
+    
+    wp_enqueue_script( 'bourbon-js12', get_template_directory_uri() . '/js2/jquery.easing.min.js');
+//    wp_enqueue_script( 'bourbon-js13', get_template_directory_uri() . '/js2/scrolling-nav.js');
+    wp_enqueue_script( 'bourbon-js14', get_template_directory_uri() . '/js2/jquery.vide.min.js');
+    wp_enqueue_script( 'bourbon-js15', get_template_directory_uri() . '/js2/mixitup.min.js');
+    wp_enqueue_script( 'bourbon-js16', get_template_directory_uri() . '/js2/jquery.lettering.js');
+    wp_enqueue_script( 'bourbon-js17', get_template_directory_uri() . '/js2/jquery.textillate.js');
+    wp_enqueue_script( 'bourbon-js18', get_template_directory_uri() . '/js2/jquery.visible.min.js');
+    wp_enqueue_script( 'bourbon-js19', get_template_directory_uri() . '/js2/javascript.js');
+}
+add_action( 'wp_enqueue_scripts', 'bourbon_js' );
 
 //add_action('elementor/editor/after_enqueue_scripts', function() {
 //    wp_enqueue_script( 'script_name', plugin_dir_url( __FILE__ ) . 'path/to/file.js' );
